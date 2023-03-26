@@ -1,24 +1,26 @@
 package ChatEngine;
 
+import GUI.client_chat;
+
 import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 
 public class Client {
-  private Socket socket;
-  private BufferedReader bufferedReader;
-  private BufferedWriter bufferedWriter;
-  private String username;
+    private Socket socket;
+    private BufferedReader bufferedReader;
+    private BufferedWriter bufferedWriter;
+    private String username;
 
 
     public Client(Socket socket, String username){
         try {
-        this.socket = socket;
-        this.username = username;
-        this.bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-        this.bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            this.socket = socket;
+            this.username = username;
+            this.bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+            this.bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         } catch (IOException e) {
-           closeEverything(socket,bufferedReader,bufferedWriter);
+            closeEverything(socket,bufferedReader,bufferedWriter);
         }
     }
 
@@ -27,13 +29,16 @@ public class Client {
             bufferedWriter.write(username);
             bufferedWriter.newLine();
             bufferedWriter.flush();
-            Scanner scanner = new Scanner(System.in);
+            Scanner scanner =new Scanner(System.in);
             while(socket.isConnected()){
-                String msgtosend =  scanner.nextLine();
-                bufferedWriter.write(username+": "+msgtosend);
+                String message =scanner.nextLine();
+                bufferedWriter.write(username+": "+message);
                 bufferedWriter.newLine();
                 bufferedWriter.flush();
-
+                if (message.equalsIgnoreCase("bye")) {
+                    System.exit(0);
+                    break;
+                }
 
             }
         } catch (IOException e) {
@@ -45,7 +50,9 @@ public class Client {
         new Thread(new Runnable() {
             @Override
             public void run() {
+
                 String msgfromchat;
+
                 while(socket.isConnected()){
                     try{
                         msgfromchat = bufferedReader.readLine();
@@ -55,8 +62,13 @@ public class Client {
                         closeEverything(socket,bufferedReader,bufferedWriter);
                     }
                 }
+
             }
         }).start();
+    }
+    public String setMessage(String msgothers){
+
+        return msgothers;
     }
 
     private void closeEverything(Socket socket, BufferedReader bufferedReader, BufferedWriter bufferedWriter) {

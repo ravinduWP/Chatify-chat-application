@@ -22,7 +22,7 @@ public class Server {
         while(!serverSocket.isClosed()){
             try {
                 Socket socket = serverSocket.accept();
-                System.out.println("New Client Connected..");
+                test1.jTextArea1.append("\nNew Client Connected..");
                 ClientHandler clientHandler = new ClientHandler(socket);
                 Thread thread = new Thread(clientHandler);
                 thread.start();

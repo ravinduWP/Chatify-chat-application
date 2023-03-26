@@ -169,7 +169,7 @@ public class test1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    public static javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton start;
     private javax.swing.JButton stop;
     // End of variables declaration//GEN-END:variables
