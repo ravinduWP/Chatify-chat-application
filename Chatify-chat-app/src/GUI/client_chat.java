@@ -24,7 +24,7 @@ public class client_chat extends javax.swing.JFrame{
 
     private Client c;
     public client_chat() throws IOException {
-        Socket socket = new Socket("192.168.8.133",55555);
+        Socket socket = new Socket("localhost",55555);
         this.c = new Client(socket,"user1");
         c.listenForMessage();
         initComponents();
