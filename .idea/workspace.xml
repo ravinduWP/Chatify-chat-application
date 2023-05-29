@@ -2,26 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="567f6365-36be-420d-ab3f-66ba8c9a5507" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/nbproject/genfiles.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/nbproject/genfiles.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/out/production/Chatify-chat-app/Database/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/out/production/Chatify-chat-app/Database/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/out/production/Chatify-chat-app/GUI/client_chat$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/out/production/Chatify-chat-app/GUI/client_chat$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/out/production/Chatify-chat-app/GUI/client_chat$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/out/production/Chatify-chat-app/GUI/client_chat$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/out/production/Chatify-chat-app/GUI/client_chat$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/out/production/Chatify-chat-app/GUI/client_chat$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/out/production/Chatify-chat-app/GUI/client_chat.class" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/out/production/Chatify-chat-app/GUI/client_chat.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/ChatEngine/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/ChatEngine/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Login.form" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Login.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Serverstatus.form" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Serverstatus.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Serverstatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Serverstatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Signup.form" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Signup.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Signup.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Signup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Userprofile.form" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Userprofile.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Userprofile.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Userprofile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/client_chat.form" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/client_chat.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/client_chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/client_chat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chatify-chat-application.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-application.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/ChatEngine/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/ChatEngine/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

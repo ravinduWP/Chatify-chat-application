@@ -3,6 +3,8 @@ package ChatEngine;
 import GUI.client_chat;
 import java.io.*;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Client {
     private Socket socket;
@@ -46,7 +48,10 @@ public class Client {
                     String receivedMessage;
                     while ((receivedMessage = bufferedReader.readLine()) != null) {
                         System.out.println(receivedMessage);
-                        client_chat.chat_display.append("\n"+receivedMessage);
+                        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy, hh:mmaa");
+                        String date = df.format(new Date());
+                        client_chat.chat_display.append("\n\n"+receivedMessage+"\n          "+date);
+
 
 
                     }
