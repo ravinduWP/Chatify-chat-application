@@ -49,14 +49,12 @@ public class test1 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        start.setBackground(new java.awt.Color(85, 117, 113));
+        start.setForeground(new java.awt.Color(255, 255, 255));
         start.setText("Start Server");
         start.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-                    startActionPerformed(evt);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+                startActionPerformed(evt);
             }
         });
 
@@ -64,6 +62,8 @@ public class test1 extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
+        stop.setBackground(new java.awt.Color(85, 117, 113));
+        stop.setForeground(new java.awt.Color(255, 255, 255));
         stop.setText("Stop Server");
         stop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
