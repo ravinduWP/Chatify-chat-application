@@ -63,4 +63,10 @@ public class User {
             JOptionPane.showMessageDialog(null,"User Registeration failed, Check Email and try Again");
         }
     }
+    
+    public void loginUser()throws SQLException, ClassNotFoundException {
+        ConnectDB db = new ConnectDB();
+        Statement st = db.getConn().createStatement();
+        
+    }
 }
