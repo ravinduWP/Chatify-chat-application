@@ -54,7 +54,11 @@ public class test1 extends javax.swing.JFrame {
         start.setText("Start Server");
         start.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                startActionPerformed(evt);
+                try {
+                    startActionPerformed(evt);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 

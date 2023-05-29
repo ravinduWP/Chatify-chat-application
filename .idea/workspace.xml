@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="567f6365-36be-420d-ab3f-66ba8c9a5507" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/ChatEngine/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/ChatEngine/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/ChatEngine/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/ChatEngine/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/test1.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/test1.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,5 +67,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Chatify-chat-app/src/GUI/test1.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
