@@ -4,6 +4,7 @@ import GUI.client_chat;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Client {
@@ -11,7 +12,6 @@ public class Client {
     private BufferedReader bufferedReader;
     private BufferedWriter bufferedWriter;
     private String username;
-
 
     public Client(Socket socket, String username){
         try {
@@ -26,6 +26,8 @@ public class Client {
 
     public void sendMessage(){
         try{
+//            System.out.println(username+" :"+message);
+
             bufferedWriter.write(username);
             bufferedWriter.newLine();
             bufferedWriter.flush();
@@ -54,22 +56,21 @@ public class Client {
                 String msgfromchat;
 
                 while(socket.isConnected()){
+
                     try{
-                        msgfromchat = bufferedReader.readLine();
+                           msgfromchat = bufferedReader.readLine();
+//                           client_chat.chat_display.append(msgfromchat+"\n");
                         System.out.println(msgfromchat);
 
                     } catch (IOException e) {
                         closeEverything(socket,bufferedReader,bufferedWriter);
                     }
                 }
-
             }
         }).start();
     }
-    public String setMessage(String msgothers){
 
-        return msgothers;
-    }
+
 
     private void closeEverything(Socket socket, BufferedReader bufferedReader, BufferedWriter bufferedWriter) {
         try{
@@ -89,11 +90,12 @@ public class Client {
 
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter ur name to join the chat: ");
-        String username =scanner.nextLine();
+        System.out.println("Enter name to join the Chat");
+        String username = scanner.nextLine();
         Socket socket = new Socket("192.168.8.177",55555);
         Client client = new Client(socket,username);
         client.listenForMessage();
-        client.sendMessage();
+       client.sendMessage();
     }
+
 }
