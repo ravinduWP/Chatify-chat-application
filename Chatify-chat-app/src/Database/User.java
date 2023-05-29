@@ -1,6 +1,8 @@
 package Database;
 
 import javax.swing.*;
+import javax.xml.transform.Result;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -10,7 +12,7 @@ public class User {
     private String nickname;
     private String password;
     private String propic;
-
+    
     public String getEmail() {
         return Email;
     }
@@ -64,9 +66,29 @@ public class User {
         }
     }
     
-    public void loginUser()throws SQLException, ClassNotFoundException {
+    public boolean loginUser(String email, String password) throws ClassNotFoundException, SQLException {
+        Boolean flag = false;
         ConnectDB db = new ConnectDB();
         Statement st = db.getConn().createStatement();
+        String query = "SELECT * FROM user WHERE email='"+email+"' AND password='"+password+"'";
+    // Validate the email and password
+    if (new Validation().isValidEmail(email)&& !password.matches("")) {
+        ResultSet rs = st.executeQuery(query);
+        if (rs.next()){
+            JOptionPane.showMessageDialog(null,"success!");
+            flag=true;
+        }else {
+            JOptionPane.showMessageDialog(null,"check email and Password");
+            flag=false;
+        }
+
         
+    } else {
+        JOptionPane.showMessageDialog(null,"Fill all the fields");
+        flag=false;
+
+        // Display error message or take appropriate action
+        }
+        return flag;
     }
 }

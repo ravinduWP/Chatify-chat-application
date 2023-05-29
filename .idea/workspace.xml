@@ -5,12 +5,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Chatify-chat-app/out/production/Chatify-chat-app/GUI/Img/social-media-seamless-pattern-can-be-used-wallpaper-website-background-doodles-hand-drawn-vector-symbols-objects-72161362_2.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/Database/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/Database/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Login.form" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Login.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/client_chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/client_chat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/login.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/test1.form" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/test1.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/test1.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/test1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/Database/Validation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/Database/Validation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Login.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Login.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/login.form" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/login.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Chatify-chat-application/GUI/Img/social-media-seamless-pattern-can-be-used-wallpaper-website-background-doodles-hand-drawn-vector-symbols-objects-72161362_2.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +72,7 @@
       <workItem from="1684856610531" duration="1663000" />
       <workItem from="1684864002311" duration="1218000" />
       <workItem from="1685335516583" duration="5730000" />
-      <workItem from="1685381577986" duration="892000" />
+      <workItem from="1685381577986" duration="4278000" />
     </task>
     <servers />
   </component>

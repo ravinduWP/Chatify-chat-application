@@ -10,7 +10,7 @@ package Database;
  */
 public class Validation {
     
-    private boolean isValidEmail(String email) {
+    public boolean isValidEmail(String email) {
         String regexPattern = "^(.+)@(\\S+)$";
        if (email.matches(regexPattern)) {
            return true;
