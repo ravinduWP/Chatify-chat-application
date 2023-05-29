@@ -6,6 +6,8 @@ package GUI;
 
 
 import ChatEngine.Client;
+import ChatEngine.ServerData;
+import Database.UserData;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -23,9 +25,11 @@ import javax.swing.*;
 public class client_chat extends javax.swing.JFrame{
 
     private Client c;
+    ServerData sd = new ServerData();
+    UserData ud = new UserData();
     public client_chat() throws IOException {
-        Socket socket = new Socket("localhost",55555);
-        this.c = new Client(socket,"user1");
+        Socket socket = new Socket(sd.getIp(),55555);
+        this.c = new Client(socket,ud.getNickname());
         c.listenForMessage();
         initComponents();
     }
@@ -43,8 +47,8 @@ public class client_chat extends javax.swing.JFrame{
         text = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         chat_display = new javax.swing.JTextArea();
-        send = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -56,79 +60,40 @@ public class client_chat extends javax.swing.JFrame{
                 }
             }
         });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(text, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 350, 269, 32));
 
         chat_display.setColumns(20);
         chat_display.setRows(5);
         jScrollPane1.setViewportView(chat_display);
 
-        send.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        send.setText("Send");
-        send.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-                    sendActionPerformed(evt);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        });
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 22, 269, 310));
 
-        jButton1.setText("send msg");
+        jButton1.setText("send");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 355, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
-                    .addComponent(text))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                        .addComponent(send, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        jPanel1.setBackground(new java.awt.Color(211, 228, 205));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 530, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(send, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(132, 132, 132)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(24, 24, 24))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 410, Short.MAX_VALUE)
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, -4, 530, 410));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void sendActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_sendActionPerformed
-//          chat_display.append("\n"+text.getText());
-//          Socket socket = new Socket("192.168.8.177",55555);
-//          String username=text.getText();
-//          this.c = new Client(socket, username);
-//          text.setText("");
-          
-        
-    }//GEN-LAST:event_sendActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) throws IOException {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
@@ -197,11 +162,9 @@ public class client_chat extends javax.swing.JFrame{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextArea chat_display;
     private javax.swing.JButton jButton1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton send;
     public static javax.swing.JTextField text;
-
-
     // End of variables declaration//GEN-END:variables
 
     

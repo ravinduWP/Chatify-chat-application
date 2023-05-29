@@ -154,6 +154,7 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 310));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
@@ -186,14 +187,15 @@ public class Login extends javax.swing.JFrame {
                 
                 if (rs.next()){
                     userData.setEmail(rs.getString(1));
-                    userData.setUsername(rs.getString());
+                    userData.setUsername(rs.getString(2));
+                    userData.setNickname(rs.getString(3));
                     
-                    if(rs.getString("username").equalsIgnoreCase("admin")){
+                    if(rs.getString(2).equalsIgnoreCase("admin")){
 
-                        new test1().show();
+                        new Serverstat().show();
                         this.dispose();
                     }else {
-                        new client_chat().show();
+                        new AddHost().show();
                         this.dispose();
                     }
 
@@ -204,7 +206,7 @@ public class Login extends javax.swing.JFrame {
                 }
             }
 
-        } catch (SQLException | IOException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 

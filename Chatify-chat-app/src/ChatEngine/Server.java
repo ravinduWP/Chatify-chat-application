@@ -1,12 +1,16 @@
 package ChatEngine;
 
-import GUI.test1;
+import GUI.Serverstat;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
+
+    public Server() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     public ServerSocket getServerSocket() {
         return serverSocket;
     }
@@ -22,7 +26,7 @@ public class Server {
         while(!serverSocket.isClosed()){
             try {
                 Socket socket = serverSocket.accept();
-                test1.jTextArea1.append("\nNew Client Connected..");
+                Serverstat.jTextArea1.append("\nNew Client Connected..");
                 ++count;
                 ClientHandler clientHandler = new ClientHandler(socket);
                 Thread thread = new Thread(clientHandler);
