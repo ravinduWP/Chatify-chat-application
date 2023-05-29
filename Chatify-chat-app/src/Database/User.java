@@ -54,7 +54,7 @@ public class User {
     public void registerUser() throws SQLException, ClassNotFoundException {
         ConnectDB db = new ConnectDB();
         Statement st = db.getConn().createStatement();
-        String query = "INSERT INTO chatify_db VALUES("+Email+","+username+","+nickname+","+password+","+propic+",)";
+        String query = "INSERT INTO chatify_db VALUES('"+Email+"','"+username+"','"+nickname+"','"+password+"','"+propic+"')";
         int row = st.executeUpdate(query);
         if (row>1){
             JOptionPane.showMessageDialog(null,"User Register Successfully");

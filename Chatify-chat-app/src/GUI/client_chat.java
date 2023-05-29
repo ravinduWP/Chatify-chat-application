@@ -4,12 +4,15 @@
  */
 package GUI;
 
+
 import ChatEngine.Client;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.net.Socket;
-import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.*;
+
 
 /**
  *
@@ -17,17 +20,17 @@ import java.util.Scanner;
  */
 
 
-public class client_chat extends javax.swing.JFrame {
+public class client_chat extends javax.swing.JFrame{
 
-    /**
-     * Creates new form client_chat
-     */
-    static Socket socket;
-    static Client client;
-    public client_chat() {
+    private Client c;
+    public client_chat() throws IOException {
+        Socket socket = new Socket("localhost",55555);
+        this.c = new Client(socket,"user1");
+        c.listenForMessage();
         initComponents();
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,6 +44,7 @@ public class client_chat extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         chat_display = new javax.swing.JTextArea();
         send = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -69,6 +73,13 @@ public class client_chat extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("send msg");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,19 +89,31 @@ public class client_chat extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
                     .addComponent(text))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(send, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addComponent(send, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(send, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(132, 132, 132)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(send, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1))
                 .addGap(24, 24, 24))
         );
 
@@ -98,27 +121,35 @@ public class client_chat extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void sendActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_sendActionPerformed
-//        client.sendMessage(text.getText());
-//        chat_display.append(text.getText());
-
+//          chat_display.append("\n"+text.getText());
+//          Socket socket = new Socket("192.168.8.177",55555);
+//          String username=text.getText();
+//          this.c = new Client(socket, username);
+//          text.setText("");
+          
+        
     }//GEN-LAST:event_sendActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) throws IOException {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-//        String username ="test user";
-//        Socket socket = new Socket("192.168.8.177",55555);
-//        Client client = new Client(socket,username);
-//
-//        Thread t = new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                while(true){
-//                    client.listenForMessage();
-//                }
-//            }
-//        });
-//        t.start();
+
     }//GEN-LAST:event_formWindowOpened
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String msg=text.getText();
+        chat_display.append("\n"+text.getText());
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+        @Override
+        protected Void doInBackground() throws Exception {
+            c.sendMessage(msg);
+            return null;
+        }
+    };
+
+    worker.execute();
+        text.setText("");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,15 +185,24 @@ public class client_chat extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new client_chat().setVisible(true);
+                try {
+                    new client_chat().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(client_chat.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextArea chat_display;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton send;
     public static javax.swing.JTextField text;
+
+
     // End of variables declaration//GEN-END:variables
+
+    
 }
