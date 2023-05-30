@@ -4,8 +4,8 @@
  */
 package GUI;
 
+
 import Database.User;
-import Database.UserData;
 import Database.Validation;
 
 import javax.swing.*;
@@ -24,9 +24,11 @@ public class Login extends javax.swing.JFrame {
      */
 
     Validation val = new Validation();
+    
     public Login() {
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -174,7 +176,7 @@ public class Login extends javax.swing.JFrame {
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt)  {//GEN-FIRST:event_loginActionPerformed
         User user = new User();
-        UserData userData = new UserData();
+        
 
         
         try {
@@ -186,17 +188,14 @@ public class Login extends javax.swing.JFrame {
             }else{
                 
                 if (rs.next()){
-                    userData.setEmail(rs.getString(1));
-                    userData.setUsername(rs.getString(2));
-                    userData.setNickname(rs.getString(3));
                     
                     if(rs.getString(2).equalsIgnoreCase("admin")){
 
                         new Serverstat().show();
-                        this.dispose();
+                        this.setVisible(false);
                     }else {
                         new AddHost().show();
-                        this.dispose();
+                        this.setVisible(false);
                     }
 
                 }

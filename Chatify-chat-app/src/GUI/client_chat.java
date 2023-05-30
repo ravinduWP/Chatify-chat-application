@@ -7,7 +7,6 @@ package GUI;
 
 import ChatEngine.Client;
 import ChatEngine.ServerData;
-import Database.UserData;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -26,13 +25,16 @@ public class client_chat extends javax.swing.JFrame{
 
     private Client c;
     ServerData sd = new ServerData();
-    UserData ud = new UserData();
+    
+    private String nickname="user1";
+   
     public client_chat() throws IOException {
         Socket socket = new Socket(sd.getIp(),55555);
-        this.c = new Client(socket,ud.getNickname());
+        this.c = new Client(socket,nickname);
         c.listenForMessage();
         initComponents();
     }
+    
     
     
     /**
