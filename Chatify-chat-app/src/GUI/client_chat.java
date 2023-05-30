@@ -26,11 +26,11 @@ public class client_chat extends javax.swing.JFrame{
     private Client c;
     ServerData sd = new ServerData();
     
-    private String nickname="user1";
+    
    
     public client_chat() throws IOException {
         Socket socket = new Socket(sd.getIp(),55555);
-        this.c = new Client(socket,nickname);
+        this.c = new Client(socket,"user2");
         c.listenForMessage();
         initComponents();
     }
