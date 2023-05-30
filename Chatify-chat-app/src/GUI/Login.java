@@ -84,6 +84,11 @@ public class Login extends javax.swing.JFrame {
         jLabel5.setText("Not registered?");
 
         jLabel6.setText("Create an account");
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
 
         emailval.setForeground(new java.awt.Color(255, 51, 51));
 
@@ -210,6 +215,12 @@ public class Login extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_loginActionPerformed
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        // TODO add your handling code here:
+        new Signup().show();
+        this.dispose();
+    }//GEN-LAST:event_jLabel6MouseClicked
 
     /**
      * @param args the command line arguments
