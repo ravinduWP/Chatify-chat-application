@@ -1,21 +1,33 @@
 package ChatEngine;
 
+<<<<<<< Updated upstream
 import GUI.test1;
 
+=======
+import GUI.Serverstat;
+>>>>>>> Stashed changes
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Server {
+<<<<<<< Updated upstream
     public ServerSocket getServerSocket() {
         return serverSocket;
     }
 
+=======
+    private final int port;
+    private final List<ClientHandler> clients;
+>>>>>>> Stashed changes
     private ServerSocket serverSocket;
-
-    public Server(ServerSocket serverSocket) {
-        this.serverSocket = serverSocket;
+    public Server(int port) {
+        this.port = port;
+        this.clients = new ArrayList<>();
     }
+<<<<<<< Updated upstream
 
     public void startServer(){
 
@@ -24,23 +36,71 @@ public class Server {
                 Socket socket = serverSocket.accept();
                 test1.jTextArea1.append("\nNew Client Connected..");
                 ClientHandler clientHandler = new ClientHandler(socket);
+=======
+
+    public void start() {
+        try {
+            // Create a server socket
+             serverSocket = new ServerSocket(port);
+            Serverstat.stat.append("Server started on port " + port);
+//            System.out.println("Server started on port " + port);
+
+            while (true) {
+                // Accept client connections
+                Socket clientSocket = serverSocket.accept();
+                Serverstat.stat.append("\nClient connected: " + clientSocket.getInetAddress());
+//                System.out.println("Client connected: " + clientSocket.getInetAddress());
+
+                // Create a new client handler for each client
+                ClientHandler clientHandler = new ClientHandler(clientSocket, this);
+
+                // Add the client handler to the list of clients
+                clients.add(clientHandler);
+
+                // Start a new thread to handle the client
+>>>>>>> Stashed changes
                 Thread thread = new Thread(clientHandler);
                 thread.start();
-
-            } catch (IOException e) {
-                System.out.println("Exception :"+e.getMessage());
             }
-
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    public void closeServerSocket(){
-        if (serverSocket != null){
-            try {
+    public void broadcast(String message, ClientHandler sender) {
+        for (ClientHandler client : clients) {
+            // Skip sending the message to the sender
+            if (client != sender) {
+                client.sendMessage(message);
+            }
+        }
+    }
+
+    public void removeClient(ClientHandler client) {
+        clients.remove(client);
+         
+        String disconnectMessage = "\nClient disconnected: " + client.getClientSocket().getInetAddress();
+        broadcast(disconnectMessage, null);
+        Serverstat.stat.append(disconnectMessage);
+        // Display a message when a client disconnects
+//        System.out.println(disconnectMessage);
+
+    }
+    public void stop() {
+        try {
+            // Close the server socket
+            if (serverSocket != null && !serverSocket.isClosed()) {
                 serverSocket.close();
-            } catch (IOException e) {
-                e.printStackTrace();
             }
+
+            // Terminate all client connections
+            for (ClientHandler client : clients) {
+                client.stop();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
+
+
 }

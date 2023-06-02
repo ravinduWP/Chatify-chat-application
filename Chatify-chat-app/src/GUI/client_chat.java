@@ -22,6 +22,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class client_chat extends javax.swing.JFrame {
 
+<<<<<<< Updated upstream
     /**
      * Creates new form client_chat
      */
@@ -29,6 +30,13 @@ public class client_chat extends javax.swing.JFrame {
     private static Client client;
     public client_chat() throws IOException {
 
+=======
+  
+    
+   private Client client;
+    public client_chat() throws IOException {
+        
+>>>>>>> Stashed changes
         initComponents();
     }
 
@@ -44,9 +52,14 @@ public class client_chat extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         chat_display = new javax.swing.JTextArea();
+<<<<<<< Updated upstream
         text = new javax.swing.JTextField();
         send = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+=======
+        sendbtn = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+>>>>>>> Stashed changes
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -66,6 +79,7 @@ public class client_chat extends javax.swing.JFrame {
         chat_display.setRows(5);
         jScrollPane1.setViewportView(chat_display);
 
+<<<<<<< Updated upstream
         send.setBackground(new java.awt.Color(85, 117, 113));
         send.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         send.setForeground(new java.awt.Color(255, 255, 255));
@@ -79,6 +93,17 @@ public class client_chat extends javax.swing.JFrame {
                 }
             }
         });
+=======
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 22, 269, 310));
+
+        sendbtn.setText("send");
+        sendbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendbtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(sendbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 355, -1, -1));
+>>>>>>> Stashed changes
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Img/icons8-male-user-48_1.png"))); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -134,6 +159,7 @@ public class client_chat extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< Updated upstream
     private void sendActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_sendActionPerformed
        
        SwingWorker<Void, String> worker = new SwingWorker<Void, String>() {
@@ -143,6 +169,13 @@ public class client_chat extends javax.swing.JFrame {
                 
                 return null;
             }
+=======
+    private void formWindowOpened(java.awt.event.WindowEvent evt) throws IOException {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        String host = "localhost";  // Replace with the server host
+            int port = 12345;  // Replace with the server port
+            connectToServer(host, port);
+>>>>>>> Stashed changes
 
         };
         // Start the worker
@@ -164,6 +197,7 @@ public class client_chat extends javax.swing.JFrame {
 //        client = new Client(socket,username);
 //        client.listenForMessage();
     }//GEN-LAST:event_formWindowOpened
+<<<<<<< Updated upstream
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) throws SQLException, ClassNotFoundException {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
@@ -171,6 +205,55 @@ public class client_chat extends javax.swing.JFrame {
         new Userprofile().setVisible(true);
     }//GEN-LAST:event_jLabel1MouseClicked
 
+=======
+    private void connectToServer(String host, int port) {
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                client = new Client(host, port);
+                client.connect();
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                // Handle any UI updates or post-connection tasks here
+            }
+        };
+
+        worker.execute();
+    }
+
+    private void sendMessage(String message) {
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                if (client != null) {
+                    client.sendMessage(message);
+                   
+                }
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                // Handle any UI updates or post-message tasks here
+            }
+        };
+
+        worker.execute();
+    }
+    private void sendbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendbtnActionPerformed
+
+        String message = text.getText();
+        if (!message.isEmpty()) {
+            chat_display.append("\n"+message);
+            sendMessage(message);
+            text.setText("");
+        }
+       
+    }//GEN-LAST:event_sendbtnActionPerformed
+>>>>>>> Stashed changes
 
     /**
      * @param args the command line arguments
@@ -216,10 +299,16 @@ public class client_chat extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextArea chat_display;
+<<<<<<< Updated upstream
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton send;
+=======
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton sendbtn;
+>>>>>>> Stashed changes
     public static javax.swing.JTextField text;
     // End of variables declaration//GEN-END:variables
 }

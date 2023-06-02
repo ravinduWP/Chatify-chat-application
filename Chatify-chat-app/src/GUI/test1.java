@@ -7,13 +7,16 @@ package GUI;
 import ChatEngine.Server;
 
 import javax.swing.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
+
 import java.io.IOException;
+<<<<<<< Updated upstream:Chatify-chat-app/src/GUI/test1.java
 import java.net.ServerSocket;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+=======
+
+>>>>>>> Stashed changes:Chatify-chat-app/src/GUI/Serverstat.java
 
 /**
  *
@@ -22,15 +25,20 @@ import java.util.logging.Logger;
 public class test1 extends javax.swing.JFrame {
 
     /**
+<<<<<<< Updated upstream:Chatify-chat-app/src/GUI/test1.java
      * Creates new form test1
      */
     private  Server server;
     private SwingWorker<Void, String> worker;
     public test1() {
+=======
+     * Creates new form Server stat
+     */
+    private  Server server;
+//    private SwingWorker<Void, String> worker;
+    public Serverstat() {
+>>>>>>> Stashed changes:Chatify-chat-app/src/GUI/Serverstat.java
         initComponents();
-    }
-    public void setTextArea(String servermsg){
-        jTextArea1.setText(servermsg);
     }
 
     /**
@@ -44,7 +52,12 @@ public class test1 extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
+<<<<<<< Updated upstream:Chatify-chat-app/src/GUI/test1.java
         jTextArea1 = new javax.swing.JTextArea();
+=======
+        stat = new javax.swing.JTextArea();
+        start = new javax.swing.JButton();
+>>>>>>> Stashed changes:Chatify-chat-app/src/GUI/Serverstat.java
         stop = new javax.swing.JButton();
         start = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -57,9 +70,17 @@ public class test1 extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(211, 228, 205));
 
+<<<<<<< Updated upstream:Chatify-chat-app/src/GUI/test1.java
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
+=======
+        stat.setColumns(20);
+        stat.setRows(5);
+        stat.setAutoscrolls(false);
+        stat.setFocusable(false);
+        jScrollPane1.setViewportView(stat);
+>>>>>>> Stashed changes:Chatify-chat-app/src/GUI/Serverstat.java
 
         stop.setBackground(new java.awt.Color(85, 117, 113));
         stop.setForeground(new java.awt.Color(255, 255, 255));
@@ -75,11 +96,7 @@ public class test1 extends javax.swing.JFrame {
         start.setText("Start Server");
         start.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-                    startActionPerformed(evt);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+                startActionPerformed(evt);
             }
         });
 
@@ -101,8 +118,14 @@ public class test1 extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(start)
+<<<<<<< Updated upstream:Chatify-chat-app/src/GUI/test1.java
                         .addGap(41, 41, 41)
                         .addComponent(stop))
+=======
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                        .addComponent(stop)
+                        .addGap(67, 67, 67))
+>>>>>>> Stashed changes:Chatify-chat-app/src/GUI/Serverstat.java
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(63, 63, 63)
@@ -114,6 +137,7 @@ public class test1 extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+<<<<<<< Updated upstream:Chatify-chat-app/src/GUI/test1.java
                 .addGap(51, 51, 51)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -122,18 +146,47 @@ public class test1 extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
+=======
+                .addGap(13, 13, 13)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+>>>>>>> Stashed changes:Chatify-chat-app/src/GUI/Serverstat.java
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(start)
                     .addComponent(stop))
                 .addContainerGap(100, Short.MAX_VALUE))
         );
 
+<<<<<<< Updated upstream:Chatify-chat-app/src/GUI/test1.java
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 500));
+=======
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+>>>>>>> Stashed changes:Chatify-chat-app/src/GUI/Serverstat.java
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< Updated upstream:Chatify-chat-app/src/GUI/test1.java
     private void startActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_startActionPerformed
         worker = new SwingWorker<Void, String>() {
             @Override
@@ -165,6 +218,38 @@ public class test1 extends javax.swing.JFrame {
        dispose();
 
     }//GEN-LAST:event_stopActionPerformed
+=======
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+            
+    }//GEN-LAST:event_formWindowOpened
+
+    private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
+        // TODO add your handling code here:
+        stat.append("Server Started..\n");
+        start.setEnabled(false);
+
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                int port = 12345;
+                server = new Server(port);
+                server.start();
+                return null;
+            }
+        };
+
+        worker.execute();
+        
+    }//GEN-LAST:event_startActionPerformed
+
+    private void stopActionPerformed(java.awt.event.ActionEvent evt) {
+         server.stop();
+//         this.dispose();
+//        new Login().show();
+
+    }                                    
+>>>>>>> Stashed changes:Chatify-chat-app/src/GUI/Serverstat.java
 
     /**
      * @param args the command line arguments
@@ -206,9 +291,13 @@ public class test1 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+<<<<<<< Updated upstream:Chatify-chat-app/src/GUI/test1.java
     public static javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
+=======
+>>>>>>> Stashed changes:Chatify-chat-app/src/GUI/Serverstat.java
     private javax.swing.JButton start;
+    public static javax.swing.JTextArea stat;
     private javax.swing.JButton stop;
     // End of variables declaration//GEN-END:variables
 }
