@@ -23,6 +23,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class client_chat extends javax.swing.JFrame {
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     /**
      * Creates new form client_chat
      */
@@ -40,6 +41,19 @@ public class client_chat extends javax.swing.JFrame {
         initComponents();
     }
 
+=======
+   
+
+
+    private Client client;
+    public client_chat() throws IOException {
+        
+        initComponents();
+    }
+
+
+
+>>>>>>> Stashed changes
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,11 +67,15 @@ public class client_chat extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         chat_display = new javax.swing.JTextArea();
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         text = new javax.swing.JTextField();
         send = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 =======
         sendbtn = new javax.swing.JButton();
+=======
+        send = new javax.swing.JButton();
+>>>>>>> Stashed changes
         jPanel1 = new javax.swing.JPanel();
 >>>>>>> Stashed changes
 
@@ -80,6 +98,7 @@ public class client_chat extends javax.swing.JFrame {
         jScrollPane1.setViewportView(chat_display);
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         send.setBackground(new java.awt.Color(85, 117, 113));
         send.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         send.setForeground(new java.awt.Color(255, 255, 255));
@@ -95,6 +114,17 @@ public class client_chat extends javax.swing.JFrame {
         });
 =======
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 22, 269, 310));
+=======
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 22, 269, 310));
+
+        send.setText("send");
+        send.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendActionPerformed(evt);
+            }
+        });
+        getContentPane().add(send, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 355, -1, -1));
+>>>>>>> Stashed changes
 
         sendbtn.setText("send");
         sendbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -175,6 +205,7 @@ public class client_chat extends javax.swing.JFrame {
         String host = "localhost";  // Replace with the server host
             int port = 12345;  // Replace with the server port
             connectToServer(host, port);
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
 
         };
@@ -207,6 +238,21 @@ public class client_chat extends javax.swing.JFrame {
 
 =======
     private void connectToServer(String host, int port) {
+=======
+    }//GEN-LAST:event_formWindowOpened
+
+    private void sendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendActionPerformed
+        // TODO add your handling code here:
+        String message = text.getText();
+        if (!message.isEmpty()) {
+            sendMessage(message);
+            text.setText("");
+            chat_display.append("\n"+message);
+        }
+            
+    }//GEN-LAST:event_sendActionPerformed
+private void connectToServer(String host, int port) {
+>>>>>>> Stashed changes
         SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
             @Override
             protected Void doInBackground() throws Exception {
@@ -220,6 +266,7 @@ public class client_chat extends javax.swing.JFrame {
                 // Handle any UI updates or post-connection tasks here
             }
         };
+<<<<<<< Updated upstream
 
         worker.execute();
     }
@@ -254,7 +301,31 @@ public class client_chat extends javax.swing.JFrame {
        
     }//GEN-LAST:event_sendbtnActionPerformed
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 
+        worker.execute();
+    }
+
+    private void sendMessage(String message) {
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                if (client != null) {
+                    client.sendMessage(message);
+                   
+                }
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                // Handle any UI updates or post-message tasks here
+            }
+        };
+
+        worker.execute();
+    }
     /**
      * @param args the command line arguments
      */
@@ -264,9 +335,9 @@ public class client_chat extends javax.swing.JFrame {
 
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
-        
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -300,6 +371,7 @@ public class client_chat extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextArea chat_display;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -311,4 +383,13 @@ public class client_chat extends javax.swing.JFrame {
 >>>>>>> Stashed changes
     public static javax.swing.JTextField text;
     // End of variables declaration//GEN-END:variables
+=======
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton send;
+    public static javax.swing.JTextField text;
+    // End of variables declaration//GEN-END:variables
+
+
+>>>>>>> Stashed changes
 }

@@ -1,8 +1,12 @@
 package ChatEngine;
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import GUI.test1;
 
+=======
+import GUI.Serverstat;
+>>>>>>> Stashed changes
 =======
 import GUI.Serverstat;
 >>>>>>> Stashed changes
@@ -14,10 +18,15 @@ import java.util.List;
 
 public class Server {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     public ServerSocket getServerSocket() {
         return serverSocket;
     }
 
+=======
+    private final int port;
+    private final List<ClientHandler> clients;
+>>>>>>> Stashed changes
 =======
     private final int port;
     private final List<ClientHandler> clients;
@@ -27,6 +36,7 @@ public class Server {
         this.port = port;
         this.clients = new ArrayList<>();
     }
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 
     public void startServer(){
@@ -44,12 +54,25 @@ public class Server {
              serverSocket = new ServerSocket(port);
             Serverstat.stat.append("Server started on port " + port);
 //            System.out.println("Server started on port " + port);
+=======
+
+    public void start() {
+        try {
+            // Create a server socket
+            this.serverSocket = new ServerSocket(port);
+            
+            System.out.println("Server started on port " + port);
+>>>>>>> Stashed changes
 
             while (true) {
                 // Accept client connections
                 Socket clientSocket = serverSocket.accept();
+<<<<<<< Updated upstream
                 Serverstat.stat.append("\nClient connected: " + clientSocket.getInetAddress());
 //                System.out.println("Client connected: " + clientSocket.getInetAddress());
+=======
+                System.out.println("Client connected: " + clientSocket.getInetAddress());
+>>>>>>> Stashed changes
 
                 // Create a new client handler for each client
                 ClientHandler clientHandler = new ClientHandler(clientSocket, this);
@@ -58,6 +81,9 @@ public class Server {
                 clients.add(clientHandler);
 
                 // Start a new thread to handle the client
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                 Thread thread = new Thread(clientHandler);
                 thread.start();
@@ -78,17 +104,28 @@ public class Server {
 
     public void removeClient(ClientHandler client) {
         clients.remove(client);
+<<<<<<< Updated upstream
          
         String disconnectMessage = "\nClient disconnected: " + client.getClientSocket().getInetAddress();
+=======
+        String disconnectMessage = "Client disconnected: " + client.getClientSocket().getInetAddress();
+>>>>>>> Stashed changes
         broadcast(disconnectMessage, null);
         Serverstat.stat.append(disconnectMessage);
         // Display a message when a client disconnects
 //        System.out.println(disconnectMessage);
 
     }
+<<<<<<< Updated upstream
     public void stop() {
         try {
             // Close the server socket
+=======
+    public void stop() throws IOException {
+        
+            // Close the server socket
+//            System.out.println(this.serverSocket==null);
+>>>>>>> Stashed changes
             if (serverSocket != null && !serverSocket.isClosed()) {
                 serverSocket.close();
             }
@@ -97,9 +134,14 @@ public class Server {
             for (ClientHandler client : clients) {
                 client.stop();
             }
+<<<<<<< Updated upstream
         } catch (IOException e) {
             e.printStackTrace();
         }
+=======
+        
+    
+>>>>>>> Stashed changes
     }
 
 

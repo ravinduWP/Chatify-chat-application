@@ -5,6 +5,7 @@
 package GUI;
 
 import ChatEngine.Server;
+import static com.sun.javadoc.Doclet.start;
 
 import javax.swing.*;
 
@@ -29,6 +30,7 @@ public class test1 extends javax.swing.JFrame {
      * Creates new form test1
      */
     private  Server server;
+<<<<<<< Updated upstream:Chatify-chat-app/src/GUI/test1.java
     private SwingWorker<Void, String> worker;
     public test1() {
 =======
@@ -36,10 +38,17 @@ public class test1 extends javax.swing.JFrame {
      */
     private  Server server;
 //    private SwingWorker<Void, String> worker;
+=======
+    SwingWorker<Void, Void> worker;
+>>>>>>> Stashed changes:Chatify-chat-app/src/GUI/Serverstat.java
     public Serverstat() {
 >>>>>>> Stashed changes:Chatify-chat-app/src/GUI/Serverstat.java
         initComponents();
     }
+<<<<<<< Updated upstream:Chatify-chat-app/src/GUI/test1.java
+=======
+   
+>>>>>>> Stashed changes:Chatify-chat-app/src/GUI/Serverstat.java
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,8 +62,11 @@ public class test1 extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
 <<<<<<< Updated upstream:Chatify-chat-app/src/GUI/test1.java
+<<<<<<< Updated upstream:Chatify-chat-app/src/GUI/test1.java
         jTextArea1 = new javax.swing.JTextArea();
 =======
+=======
+>>>>>>> Stashed changes:Chatify-chat-app/src/GUI/Serverstat.java
         stat = new javax.swing.JTextArea();
         start = new javax.swing.JButton();
 >>>>>>> Stashed changes:Chatify-chat-app/src/GUI/Serverstat.java
@@ -71,15 +83,34 @@ public class test1 extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(211, 228, 205));
 
 <<<<<<< Updated upstream:Chatify-chat-app/src/GUI/test1.java
+<<<<<<< Updated upstream:Chatify-chat-app/src/GUI/test1.java
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 =======
+=======
+>>>>>>> Stashed changes:Chatify-chat-app/src/GUI/Serverstat.java
         stat.setColumns(20);
         stat.setRows(5);
         stat.setAutoscrolls(false);
         stat.setFocusable(false);
         jScrollPane1.setViewportView(stat);
+<<<<<<< Updated upstream:Chatify-chat-app/src/GUI/test1.java
+>>>>>>> Stashed changes:Chatify-chat-app/src/GUI/Serverstat.java
+=======
+
+        start.setBackground(new java.awt.Color(85, 117, 113));
+        start.setForeground(new java.awt.Color(255, 255, 255));
+        start.setText("Start Server");
+        start.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+                    startActionPerformed(evt);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
 >>>>>>> Stashed changes:Chatify-chat-app/src/GUI/Serverstat.java
 
         stop.setBackground(new java.awt.Color(85, 117, 113));
@@ -87,7 +118,11 @@ public class test1 extends javax.swing.JFrame {
         stop.setText("Stop Server");
         stop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stopActionPerformed(evt);
+                try {
+                    stopActionPerformed(evt);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -188,29 +223,22 @@ public class test1 extends javax.swing.JFrame {
 
 <<<<<<< Updated upstream:Chatify-chat-app/src/GUI/test1.java
     private void startActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_startActionPerformed
+<<<<<<< Updated upstream:Chatify-chat-app/src/GUI/test1.java
         worker = new SwingWorker<Void, String>() {
+=======
+        stat.append("Server Started..");
+        start.setEnabled(false);
+        worker = new SwingWorker<Void, Void>() {
+>>>>>>> Stashed changes:Chatify-chat-app/src/GUI/Serverstat.java
             @Override
             protected Void doInBackground() throws Exception {
-                ServerSocket serverSocket = new ServerSocket(55555);
-                Server server = new Server(serverSocket);
-                server.startServer();
-                while (!isCancelled()) {
-                    // Check for cancellation periodically
-                    Thread.sleep(100);
-                }
+                int port = 12345;
+                Server server = new Server(port);
+                server.start();
                 return null;
             }
-            @Override
-            protected void done() {
-                try {
-                    server.getServerSocket().close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         };
-
-        // Start the worker
+        
         worker.execute();
     }//GEN-LAST:event_startActionPerformed
 
@@ -224,6 +252,7 @@ public class test1 extends javax.swing.JFrame {
             
     }//GEN-LAST:event_formWindowOpened
 
+<<<<<<< Updated upstream:Chatify-chat-app/src/GUI/test1.java
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
         // TODO add your handling code here:
         stat.append("Server Started..\n");
@@ -246,6 +275,11 @@ public class test1 extends javax.swing.JFrame {
     private void stopActionPerformed(java.awt.event.ActionEvent evt) {
          server.stop();
 //         this.dispose();
+=======
+    private void stopActionPerformed(java.awt.event.ActionEvent evt) throws IOException {
+         
+        this.dispose();
+>>>>>>> Stashed changes:Chatify-chat-app/src/GUI/Serverstat.java
 //        new Login().show();
 
     }                                    
@@ -292,8 +326,11 @@ public class test1 extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
 <<<<<<< Updated upstream:Chatify-chat-app/src/GUI/test1.java
+<<<<<<< Updated upstream:Chatify-chat-app/src/GUI/test1.java
     public static javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
+=======
+>>>>>>> Stashed changes:Chatify-chat-app/src/GUI/Serverstat.java
 =======
 >>>>>>> Stashed changes:Chatify-chat-app/src/GUI/Serverstat.java
     private javax.swing.JButton start;

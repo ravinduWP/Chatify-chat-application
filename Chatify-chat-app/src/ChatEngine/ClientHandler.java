@@ -13,6 +13,7 @@ public class ClientHandler implements Runnable {
     private final PrintWriter out;
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     public static ArrayList<ClientHandler> clientHandlers = new ArrayList<>();
     private Socket socket;
     private String username;
@@ -31,11 +32,14 @@ public class ClientHandler implements Runnable {
             closeEverything(socket,bufferedReader,bufferedWriter);
         }
 =======
+=======
+>>>>>>> Stashed changes
     public ClientHandler(Socket clientSocket, Server server) throws IOException {
         this.clientSocket = clientSocket;
         this.server = server;
         this.in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         this.out = new PrintWriter(clientSocket.getOutputStream(), true);
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
     }
 
@@ -66,6 +70,11 @@ public class ClientHandler implements Runnable {
 
                }
 =======
+=======
+    }
+
+    public void run() {
+>>>>>>> Stashed changes
         try {
             String message;
             while ((message = in.readLine()) != null) {
@@ -75,16 +84,24 @@ public class ClientHandler implements Runnable {
                 server.broadcast(message, this);
             }
         } catch (IOException e) {
+<<<<<<< Updated upstream
             System.out.println("client disconnected:");
+=======
+            System.out.println("client disconnected");
+>>>>>>> Stashed changes
         } finally {
             try {
                 clientSocket.close();
                 server.removeClient(this);
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+<<<<<<< Updated upstream
     }
 
     public void sendMessage(String message) {
@@ -121,6 +138,18 @@ public class ClientHandler implements Runnable {
         return clientSocket;
     }
     public void stop() {
+=======
+    }
+
+    public void sendMessage(String message) {
+        out.println(message);
+    }
+
+    public Socket getClientSocket() {
+        return clientSocket;
+    }
+     public void stop() {
+>>>>>>> Stashed changes
         try {
             // Close the client socket
             if (clientSocket != null && !clientSocket.isClosed()) {
@@ -131,4 +160,7 @@ public class ClientHandler implements Runnable {
         }
     }
 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
