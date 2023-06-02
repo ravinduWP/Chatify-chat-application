@@ -5,6 +5,7 @@
 package GUI;
 
 import ChatEngine.Server;
+import static com.sun.javadoc.Doclet.start;
 
 import javax.swing.*;
 import java.beans.PropertyChangeEvent;
@@ -27,13 +28,11 @@ public class Serverstat extends javax.swing.JFrame {
      * Creates new form Serverstat
      */
     private  Server server;
-    private SwingWorker<Void, String> worker;
+    SwingWorker<Void, Void> worker;
     public Serverstat() {
         initComponents();
     }
-    public void setTextArea(String servermsg){
-        jTextArea1.setText(servermsg);
-    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,7 +45,7 @@ public class Serverstat extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        stat = new javax.swing.JTextArea();
         start = new javax.swing.JButton();
         stop = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -63,11 +62,11 @@ public class Serverstat extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(211, 228, 205));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setAutoscrolls(false);
-        jTextArea1.setFocusable(false);
-        jScrollPane1.setViewportView(jTextArea1);
+        stat.setColumns(20);
+        stat.setRows(5);
+        stat.setAutoscrolls(false);
+        stat.setFocusable(false);
+        jScrollPane1.setViewportView(stat);
 
         start.setBackground(new java.awt.Color(85, 117, 113));
         start.setForeground(new java.awt.Color(255, 255, 255));
@@ -87,7 +86,11 @@ public class Serverstat extends javax.swing.JFrame {
         stop.setText("Stop Server");
         stop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stopActionPerformed(evt);
+                try {
+                    stopActionPerformed(evt);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -152,32 +155,19 @@ public class Serverstat extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void startActionPerformed(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_startActionPerformed
-        jTextArea1.append("Server Started..");
-        worker = new SwingWorker<Void, String>() {
+
+        start.setEnabled(false);
+        worker = new SwingWorker<Void, Void>() {
             @Override
             protected Void doInBackground() throws Exception {
-                ServerSocket serverSocket = new ServerSocket(55555);
-                Server server = new Server(serverSocket);
-                server.startServer();
-                while (!isCancelled()) {
-                    // Check for cancellation periodically
-                    Thread.sleep(100);
-                }
+                int port = 12345;
+                Server server = new Server(port);
+                server.start();
                 return null;
             }
-            @Override
-            protected void done() {
-                try {
-                    server.getServerSocket().close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         };
-
-        // Start the worker
+        
         worker.execute();
-        start.setEnabled(false);
     }//GEN-LAST:event_startActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -193,10 +183,10 @@ public class Serverstat extends javax.swing.JFrame {
             
     }//GEN-LAST:event_formWindowOpened
 
-    private void stopActionPerformed(java.awt.event.ActionEvent evt) {
-        
+    private void stopActionPerformed(java.awt.event.ActionEvent evt) throws IOException {
+         
         this.dispose();
-        new Login().show();
+//        new Login().show();
 
     }                                    
 
@@ -242,8 +232,8 @@ public class Serverstat extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    public static javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton start;
+    public static javax.swing.JTextArea stat;
     private javax.swing.JButton stop;
     // End of variables declaration//GEN-END:variables
 }

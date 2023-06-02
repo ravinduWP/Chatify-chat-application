@@ -23,20 +23,17 @@ import javax.swing.*;
 
 public class client_chat extends javax.swing.JFrame{
 
-    private Client c;
-    ServerData sd = new ServerData();
-    
-    
    
+
+
+    private Client client;
     public client_chat() throws IOException {
-        Socket socket = new Socket(sd.getIp(),55555);
-        this.c = new Client(socket,"user2");
-        c.listenForMessage();
+        
         initComponents();
     }
-    
-    
-    
+
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,7 +46,7 @@ public class client_chat extends javax.swing.JFrame{
         text = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         chat_display = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
+        send = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,13 +68,13 @@ public class client_chat extends javax.swing.JFrame{
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 22, 269, 310));
 
-        jButton1.setText("send");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        send.setText("send");
+        send.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                sendActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 355, -1, -1));
+        getContentPane().add(send, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 355, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(211, 228, 205));
 
@@ -99,25 +96,58 @@ public class client_chat extends javax.swing.JFrame{
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) throws IOException {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-
+        String host = "localhost";  // Replace with the server host
+            int port = 12345;  // Replace with the server port
+            connectToServer(host, port);
     }//GEN-LAST:event_formWindowOpened
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void sendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendActionPerformed
         // TODO add your handling code here:
-        String msg=text.getText();
-        chat_display.append("\n"+text.getText());
-        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
-        @Override
-        protected Void doInBackground() throws Exception {
-            c.sendMessage(msg);
-            return null;
+        String message = text.getText();
+        if (!message.isEmpty()) {
+            sendMessage(message);
+            text.setText("");
+            chat_display.append("\n"+message);
         }
-    };
+            
+    }//GEN-LAST:event_sendActionPerformed
+private void connectToServer(String host, int port) {
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                client = new Client(host, port);
+                client.connect();
+                return null;
+            }
 
-    worker.execute();
-        text.setText("");
-    }//GEN-LAST:event_jButton1ActionPerformed
+            @Override
+            protected void done() {
+                // Handle any UI updates or post-connection tasks here
+            }
+        };
 
+        worker.execute();
+    }
+
+    private void sendMessage(String message) {
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                if (client != null) {
+                    client.sendMessage(message);
+                   
+                }
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                // Handle any UI updates or post-message tasks here
+            }
+        };
+
+        worker.execute();
+    }
     /**
      * @param args the command line arguments
      */
@@ -128,9 +158,9 @@ public class client_chat extends javax.swing.JFrame{
 
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
-        
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -163,11 +193,11 @@ public class client_chat extends javax.swing.JFrame{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextArea chat_display;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton send;
     public static javax.swing.JTextField text;
     // End of variables declaration//GEN-END:variables
 
-    
+
 }
