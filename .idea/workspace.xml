@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="567f6365-36be-420d-ab3f-66ba8c9a5507" name="Changes" comment="" />
+    <list default="true" id="567f6365-36be-420d-ab3f-66ba8c9a5507" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/build/classes/ChatEngine/Client$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/build/classes/ChatEngine/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/build/classes/ChatEngine/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/build/classes/ChatEngine/ClientHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/build/classes/ChatEngine/ClientHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/build/classes/ChatEngine/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/build/classes/ChatEngine/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/build/classes/GUI/Serverstat$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/build/classes/GUI/Serverstat$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/build/classes/GUI/Serverstat$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/build/classes/GUI/Serverstat$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/build/classes/GUI/Serverstat$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/build/classes/GUI/Serverstat$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/build/classes/GUI/Serverstat$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/build/classes/GUI/Serverstat$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/build/classes/GUI/Serverstat$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/build/classes/GUI/Serverstat$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/build/classes/GUI/Serverstat.class" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/build/classes/GUI/Serverstat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/build/classes/GUI/client_chat$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/build/classes/GUI/client_chat$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/build/classes/GUI/client_chat$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/build/classes/GUI/client_chat$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/build/classes/GUI/client_chat$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/build/classes/GUI/client_chat$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/build/classes/GUI/client_chat$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/build/classes/GUI/client_chat$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/build/classes/GUI/client_chat.class" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/build/classes/GUI/client_chat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/ChatEngine/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/ChatEngine/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/ChatEngine/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/ChatEngine/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/ChatEngine/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/ChatEngine/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Serverstat.form" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Serverstat.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Serverstat.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/Serverstat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/client_chat.form" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/client_chat.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/client_chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/Chatify-chat-app/src/GUI/client_chat.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -85,6 +109,7 @@
       <workItem from="1684864002311" duration="1218000" />
       <workItem from="1685335516583" duration="5730000" />
       <workItem from="1685381577986" duration="4278000" />
+      <workItem from="1685697447368" duration="888000" />
     </task>
     <servers />
   </component>

@@ -6,12 +6,15 @@ package GUI;
 
 
 import Database.User;
+import Database.UserData;
 import Database.Validation;
 
 import javax.swing.*;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -193,13 +196,16 @@ public class Login extends javax.swing.JFrame {
             }else{
                 
                 if (rs.next()){
+                    client_chat ch = new client_chat();
+                    System.out.println(rs.getString(3));
                     
+                    ch.settUser(rs.getString(3));
                     if(rs.getString(2).equalsIgnoreCase("admin")){
 
                         new Serverstat().show();
                         this.setVisible(false);
                     }else {
-                        new AddHost().show();
+                        new client_chat().show();
                         this.setVisible(false);
                     }
 
@@ -212,6 +218,8 @@ public class Login extends javax.swing.JFrame {
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } catch (IOException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_loginActionPerformed

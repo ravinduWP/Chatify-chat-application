@@ -7,6 +7,7 @@ package GUI;
 
 import ChatEngine.Client;
 import ChatEngine.ServerData;
+import Database.UserData;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -27,6 +28,7 @@ public class client_chat extends javax.swing.JFrame{
 
 
     private Client client;
+    private String nick;
     public client_chat() throws IOException {
         
         initComponents();
@@ -99,6 +101,8 @@ public class client_chat extends javax.swing.JFrame{
         String host = "localhost";  // Replace with the server host
             int port = 12345;  // Replace with the server port
             connectToServer(host, port);
+            System.out.println(this.getUser());
+            
     }//GEN-LAST:event_formWindowOpened
 
     private void sendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendActionPerformed
@@ -147,6 +151,13 @@ private void connectToServer(String host, int port) {
         };
 
         worker.execute();
+    }
+    
+    public void settUser(String user){
+       this.nick=user;
+    }
+    public String getUser(){
+        return this.nick;
     }
     /**
      * @param args the command line arguments
