@@ -4,6 +4,18 @@
  */
 package GUI;
 
+import com.sun.jdi.connect.spi.Connection;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author user
@@ -150,6 +162,11 @@ public class Userprofile extends javax.swing.JFrame {
         });
 
         jButton1.setText("Browse");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -233,6 +250,44 @@ public class Userprofile extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+ JFileChooser fileChooser = new JFileChooser();
+    int result = fileChooser.showOpenDialog(this);
+    if (result == JFileChooser.APPROVE_OPTION) {
+        File selectedFile = fileChooser.getSelectedFile();
+        try {
+            byte[] imageData;
+            try ( // Read the file as bytes
+                    FileInputStream fis = new FileInputStream(selectedFile)) {
+                imageData = new byte[(int) selectedFile.length()];
+                fis.read(imageData);
+            }
+            // Insert the image into the database
+
+            {
+    // Rest of the code...
+}
+ {
+     statement.setBytes(1, imageData);
+                statement.executeUpdate();
+                System.out.println("Image uploaded successfully!");
+
+                // Optional: Display the image in a JLabel
+                ImageIcon imageIcon = new ImageIcon(selectedFile.getAbsolutePath());
+                jLabel1.setIcon(imageIcon);
+            }
+{
+                Object ex = null;
+                Logger.getLogger(Userprofile.class.getName()).log(Level.SEVERE, null, ex);
+            }        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+    }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -289,4 +344,18 @@ public class Userprofile extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
+
+    private static class statement {
+
+        private static void setBytes(int i, byte[] imageData) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        private static void executeUpdate() {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        public statement() {
+        }
+    }
 }
