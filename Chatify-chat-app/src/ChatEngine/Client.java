@@ -1,5 +1,6 @@
 package ChatEngine;
 
+import Database.messageServer;
 import GUI.client_chat;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,8 +18,8 @@ public class Client {
     private BufferedReader reader;
     private PrintWriter writer;
     SimpleDateFormat df;
-
-    public Client(String host, int port) {
+    messageServer msr = new messageServer();
+        public Client(String host, int port) {
         this.host = host;
         this.port = port;
     }
@@ -66,6 +67,7 @@ public class Client {
             } else {
                 // Handle the received message
                 client_chat.chat_display.append("\nReceived message:"+ message);
+                msr.saveMessageToFile(message);
                 
             }
         }
