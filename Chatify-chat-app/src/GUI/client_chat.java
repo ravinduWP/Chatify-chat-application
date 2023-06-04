@@ -29,9 +29,15 @@ public class client_chat extends javax.swing.JFrame{
 
     private Client client;
     private String nick;
-    public client_chat() throws IOException {
+    public client_chat(){
+    
+        initComponents();
+    }
+    public client_chat(String nick) throws IOException {
         
         initComponents();
+        user.setText(nick);
+        this.nick=nick;
     }
 
 
@@ -45,11 +51,13 @@ public class client_chat extends javax.swing.JFrame{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        text = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        user = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         chat_display = new javax.swing.JTextArea();
         send = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        text = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -62,13 +70,20 @@ public class client_chat extends javax.swing.JFrame{
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(text, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 350, 269, 32));
+
+        jPanel1.setBackground(new java.awt.Color(211, 228, 205));
+
+        user.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                userMouseClicked(evt);
+            }
+        });
+
+        jLabel1.setText("user Name:");
 
         chat_display.setColumns(20);
         chat_display.setRows(5);
         jScrollPane1.setViewportView(chat_display);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 22, 269, 310));
 
         send.setText("send");
         send.addActionListener(new java.awt.event.ActionListener() {
@@ -76,22 +91,46 @@ public class client_chat extends javax.swing.JFrame{
                 sendActionPerformed(evt);
             }
         });
-        getContentPane().add(send, new org.netbeans.lib.awtextra.AbsoluteConstraints(405, 355, -1, -1));
-
-        jPanel1.setBackground(new java.awt.Color(211, 228, 205));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(127, 127, 127))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(send)
+                .addGap(43, 43, 43))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 410, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(send)
+                    .addComponent(text, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, -4, 530, 410));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 410));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -100,9 +139,9 @@ public class client_chat extends javax.swing.JFrame{
         // TODO add your handling code here:
         String host = "localhost";  // Replace with the server host
             int port = 12345;  // Replace with the server port
-            connectToServer(host, port);
-            System.out.println(this.getUser());
-            
+            connectToServer(host, port,nick);
+//            System.out.println(this.getUser());
+//            
     }//GEN-LAST:event_formWindowOpened
 
     private void sendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendActionPerformed
@@ -115,11 +154,17 @@ public class client_chat extends javax.swing.JFrame{
         }
             
     }//GEN-LAST:event_sendActionPerformed
-private void connectToServer(String host, int port) {
+
+    private void userMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userMouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+        new Userprofile().show();
+    }//GEN-LAST:event_userMouseClicked
+private void connectToServer(String host, int port,String nick) {
         SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
             @Override
             protected Void doInBackground() throws Exception {
-                client = new Client(host, port);
+                client = new Client(host, port,nick);
                 client.connect();
                 return null;
             }
@@ -153,12 +198,12 @@ private void connectToServer(String host, int port) {
         worker.execute();
     }
     
-    public void settUser(String user){
-       this.nick=user;
-    }
-    public String getUser(){
-        return this.nick;
-    }
+//    public void settUser(String user){
+//       this.nick=user;
+//    }
+//    public String getUser(){
+//        return this.nick;
+//    }
     /**
      * @param args the command line arguments
      */
@@ -193,21 +238,19 @@ private void connectToServer(String host, int port) {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new client_chat().setVisible(true);
-                } catch (IOException ex) {
-                    Logger.getLogger(client_chat.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new client_chat().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JTextArea chat_display;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton send;
     public static javax.swing.JTextField text;
+    public javax.swing.JLabel user;
     // End of variables declaration//GEN-END:variables
 
 

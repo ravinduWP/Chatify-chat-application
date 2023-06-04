@@ -196,16 +196,15 @@ public class Login extends javax.swing.JFrame {
             }else{
                 
                 if (rs.next()){
-                    client_chat ch = new client_chat();
-                    System.out.println(rs.getString(3));
+                    String nickname=rs.getString(3);
                     
-                    ch.settUser(rs.getString(3));
                     if(rs.getString(2).equalsIgnoreCase("admin")){
 
-                        new Serverstat().show();
+                        new Admin().show();
                         this.setVisible(false);
                     }else {
-                        new client_chat().show();
+                        
+                        new client_chat(nickname).setVisible(true);
                         this.setVisible(false);
                     }
 

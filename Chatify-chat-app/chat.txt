@@ -7,3 +7,9 @@ hi
 hello
 
 Client disconnected: /127.0.0.1
+
+Client disconnected: /127.0.0.1
+user1:hi
+user2:hello
+
+Client disconnected: /127.0.0.1

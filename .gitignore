@@ -11,3 +11,9 @@ Chatify-chat-app/build/classes/GUI/Userprofile$4.class
 Chatify-chat-app/build/classes/GUI/Userprofile.class
 Chatify-chat-app/build/classes/GUI/Userprofile$1.class
 Chatify-chat-app/chat.txt
+Chatify-chat-app/build/classes/GUI/client_chat.class
+Chatify-chat-app/build/classes/GUI/Login.class
+Chatify-chat-app/src/GUI/client_chat.java
+Chatify-chat-app/src/GUI/Login.java
+Chatify-chat-app/src/GUI/Login.java
+*.java

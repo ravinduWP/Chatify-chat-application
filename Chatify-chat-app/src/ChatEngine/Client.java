@@ -17,11 +17,14 @@ public class Client {
     private Socket socket;
     private BufferedReader reader;
     private PrintWriter writer;
+    private String nickname;
     SimpleDateFormat df;
+    
     messageServer msr = new messageServer();
-        public Client(String host, int port) {
+        public Client(String host, int port,String name) {
         this.host = host;
         this.port = port;
+        this.nickname = name;
     }
 
 
@@ -63,17 +66,18 @@ public class Client {
             if (message.equalsIgnoreCase("bye")) {
                 // Disconnect the client
                 disconnect();
+                
                 break;
             } else {
                 // Handle the received message
-                client_chat.chat_display.append("\nReceived message:"+ message);
+                client_chat.chat_display.append("\n"+ message);
                 msr.saveMessageToFile(message);
                 
             }
         }
     } catch (SocketException e) {
         // SocketException occurs when the socket is closed
-        client_chat.chat_display.append("\nClient disconnected: " + socket.getInetAddress());
+        client_chat.chat_display.append("\nClient disconnected: ");
         
     } catch (IOException e) {
         e.printStackTrace();
@@ -81,7 +85,8 @@ public class Client {
     }
 
     public void sendMessage(String message) {
-        writer.println(message);
+        
+        writer.println(nickname+":"+message);
     }
 
     public void disconnect() {
@@ -97,11 +102,5 @@ public class Client {
         return socket;
     }
 
-//    public static void Start() {
-//        String host = "localhost";  // Replace with the server host
-//        int port = 12345;  // Replace with the server port
-//        Client client = new Client(host, port);
-//        client.connect();
-//    }
 }
 
