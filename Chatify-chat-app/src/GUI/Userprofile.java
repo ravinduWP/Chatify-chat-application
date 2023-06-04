@@ -15,13 +15,29 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
  * @author user
  */
 public class Userprofile extends javax.swing.JFrame {
+private JPanel panel1;
+    private JTextField intID;
+    private JTextField textUname;
+    private JTextField textEmail;
+    private JButton updateButton; // Button to update user details
+    private JButton avatar;
+    private JTextField textNickname;
+    private JButton deleteButton;
 
+    JFileChooser fileChooser;
+    byte[] imageData;
+    
+    
+    
     /**
      * Creates new form Userprofile
      */
