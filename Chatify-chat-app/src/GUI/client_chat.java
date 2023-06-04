@@ -55,11 +55,7 @@ public class client_chat extends javax.swing.JFrame{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
-                try {
-                    formWindowOpened(evt);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+                formWindowOpened(evt);
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
