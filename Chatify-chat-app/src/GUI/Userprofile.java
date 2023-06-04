@@ -274,7 +274,7 @@ System.exit(0);        // TODO add your handling code here:
 
                 // Optional: Display the image in a JLabel
                 ImageIcon imageIcon = new ImageIcon(selectedFile.getAbsolutePath());
-                jLabel1.setIcon(imageIcon);
+//                jLabel1.setIcon(imageIcon);
             }
 {
                 Object ex = null;
