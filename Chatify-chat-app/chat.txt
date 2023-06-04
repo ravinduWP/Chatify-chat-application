@@ -3,3 +3,7 @@ how are you
 fine
 
 Client disconnected: /127.0.0.1
+hi
+hello
+
+Client disconnected: /127.0.0.1
